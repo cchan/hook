@@ -9,7 +9,7 @@ Restart=always
 RestartSec=1
 User=clive
 WorkingDirectory=/home/clive/code/hook
-ExecStart=/usr/local/bin/node -c "node hook.js"
+ExecStart=/usr/local/bin/node hook.js
 
 [Install]
 WantedBy=multi-user.target
