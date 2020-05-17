@@ -2,17 +2,14 @@
 
 set -e
 
-pip install -r backend/requirements.txt
-pip install -r deploy/requirements.txt
-npm install --production --prefix frontend
-npm run build --prefix frontend
+npm install --production
 
-sudo cp gosudoku.service /etc/systemd/system/
+sudo cp hook.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo service gosudoku start
-sudo systemctl enable gosudoku.service
+sudo service hook start
+sudo systemctl enable hook.service
 
-for conf in $(ls *.conf); do
+for f in $(ls *.conf); do
   ln -s $(realpath $f) /etc/nginx/sites-available/$(basename $f)
   ln -s /etc/nginx/sites-available/$(basename $f) /etc/nginx/sites-enabled/$(basename $f)
 done

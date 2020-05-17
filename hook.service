@@ -1,5 +1,5 @@
 [Unit]
-Description=gosudoku service
+Description=hook service
 After=network.target
 StartLimitIntervalSec=0
 
